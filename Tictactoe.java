@@ -71,14 +71,18 @@ public class Tictactoe {
         
         move = in.next();
         
-        gb.printBoard();
+        //gb.printBoard();
         while(gb.CheckWin(player,computer)==0){
+            /*if(gb.spacesPlayed==8){
+                    break;
+                }*/
             System.out.println("It's your move!");
             while(gb.takeTurn(move, player)==0){
                  //System.out.println("Please try again. Type the number of the space"
                    //  + "where you would like to move");
                      move=in.next();
             }
+            //gb.CheckWin(player, computer);
             //now the computer needs to take it's turn
             compMove = 5;
             comp = Integer.toString(compMove);
@@ -88,6 +92,7 @@ public class Tictactoe {
                 comp = Integer.toString(compMove);
             }
             gb.printBoard();
+            
            //move = in.next();
            //gb.takeTurn(move, player);
         }

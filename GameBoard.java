@@ -5,14 +5,11 @@
  */
 package tictactoe;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 /**
  *
  * @author Jonathan
  */
-public class GameBoard implements ActionListener{
+public class GameBoard{
     
     
     
@@ -29,6 +26,7 @@ public class GameBoard implements ActionListener{
     
     public boolean win=false;
     int winner;//1 for player, 0 for computer *changed this to 5 to begin with
+    int spacesPlayed = 0;//keeps track of how many spaces have been played on the board
     
    /* public String one = "1";
     public String two = "2";
@@ -50,51 +48,62 @@ public class GameBoard implements ActionListener{
     
     public int takeTurn(String m,String p){
         //m is the place the player is moving to, p is the player's character
-       //returns 1 if the move was successful, 0 otherwise
-       
+       //returns 1 if the move was successful or the board is full, 0 otherwise
+        if(spacesPlayed==9){
+            return 1;
+        }
         if(m.equals("1")&&one.visited==false){
             one.ChangeValue(p);
             one.visited = true;
+            spacesPlayed++;
             return 1;
         }
         if(m.equals("2")&&two.visited==false){
             two.ChangeValue(p);
             two.visited = true;
+            spacesPlayed++;
             return 1;
         }
         if(m.equals("3")&&three.visited==false){
             three.ChangeValue(p);
             three.visited = true;
+            spacesPlayed++;
             return 1;
         }
         if(m.equals("4")&&four.visited==false){
             four.ChangeValue(p);
             four.visited = true;
+            spacesPlayed++;
             return 1;
         }
         if(m.equals("5")&&five.visited==false){
             five.ChangeValue(p);
             five.visited = true;
+            spacesPlayed++;
             return 1;
         }
         if(m.equals("6")&&six.visited==false){
             six.ChangeValue(p);
             six.visited = true;
+            spacesPlayed++;
             return 1;
         }
         if(m.equals("7")&&seven.visited==false){
             seven.ChangeValue(p);
             seven.visited = true;
+            spacesPlayed++;
             return 1;
         }
         if(m.equals("8")&&eight.visited==false){
             eight.ChangeValue(p);
             eight.visited = true;
+            spacesPlayed++;
             return 1;
         }
         if(m.equals("9")&&nine.visited==false){
             nine.ChangeValue(p);
             nine.visited = true;
+            spacesPlayed++;
             return 1;
         }else{
             return 0;
@@ -110,39 +119,45 @@ public class GameBoard implements ActionListener{
         //p is the players character, c is the computer's character
         //checks if the win condition is met
         //returns 1 if there is a winner, zero otherwise, 2 if the board is full 
+
         if((one.value.equals(p))&&(two.value.equals(p))&&(three.value.equals(p))){
             win=true;
             winner=1;
             return 1;
         }
         
-        if((one.value.equals(p))&&(four.value.equals(p))&&(seven.value.equals(p))){
+        else if((one.value.equals(p))&&(four.value.equals(p))&&(seven.value.equals(p))){
             win=true;
             winner=1;
             return 1;
         }
         
-        if((one.value.equals(p))&&(five.value.equals(p))&&(nine.value.equals(p))){
+        else if((one.value.equals(p))&&(five.value.equals(p))&&(nine.value.equals(p))){
             win=true;
             winner=1;
             return 1;
         }
-        if((nine.value.equals(p))&&(six.value.equals(p))&&(three.value.equals(p))){
+        else if((nine.value.equals(p))&&(six.value.equals(p))&&(three.value.equals(p))){
             win=true;
             winner=1;
             return 1;
         }
-        if((nine.value.equals(p))&&(eight.value.equals(p))&&(seven.value.equals(p))){
+        else if((nine.value.equals(p))&&(eight.value.equals(p))&&(seven.value.equals(p))){
             win=true;
             winner=1;
             return 1;
         }
-        if((seven.value.equals(p))&&(five.value.equals(p))&&(three.value.equals(p))){
+        else if((seven.value.equals(p))&&(five.value.equals(p))&&(three.value.equals(p))){
             win=true;
             winner=1;
             return 1;
         }
-        if((four.value.equals(p))&&(five.value.equals(p))&&(six.value.equals(p))){
+        else if((four.value.equals(p))&&(five.value.equals(p))&&(six.value.equals(p))){
+            win=true;
+            winner=1;
+            return 1;
+        }
+        else if((two.value.equals(p))&&(five.value.equals(p))&&(eight.value.equals(p))){
             win=true;
             winner=1;
             return 1;
@@ -150,48 +165,58 @@ public class GameBoard implements ActionListener{
         
         ////check if computer has won
         
-        if((one.value.equals(c))&&(two.value.equals(c))&&(three.value.equals(c))){
+        else if((one.value.equals(c))&&(two.value.equals(c))&&(three.value.equals(c))){
             win=true;
             winner=0;
             return 1;
         }
-        if((one.value.equals(c))&&(four.value.equals(c))&&(seven.value.equals(c))){
+        else if((one.value.equals(c))&&(four.value.equals(c))&&(seven.value.equals(c))){
             win=true;
             winner=0;
             return 1;
         }
-        if((one.value.equals(c))&&(five.value.equals(c))&&(nine.value.equals(c))){
+        else if((one.value.equals(c))&&(five.value.equals(c))&&(nine.value.equals(c))){
             win=true;
             winner=0;
             return 1;
         }
-        if((nine.value.equals(c))&&(six.value.equals(c))&&(three.value.equals(c))){
+        else if((nine.value.equals(c))&&(six.value.equals(c))&&(three.value.equals(c))){
             win=true;
             winner=0;
             return 1;
         }
-        if((nine.value.equals(c))&&(eight.value.equals(c))&&(seven.value.equals(c))){
+        else if((nine.value.equals(c))&&(eight.value.equals(c))&&(seven.value.equals(c))){
             win=true;
             winner=0;
             return 1;
         }
-        if((seven.value.equals(c))&&(five.value.equals(c))&&(three.value.equals(c))){
+        else if((seven.value.equals(c))&&(five.value.equals(c))&&(three.value.equals(c))){
             win=true;
             winner=0;
             return 1;
         }
-        if((four.value.equals(c))&&(five.value.equals(c))&&(six.value.equals(c))){
+        else if((four.value.equals(c))&&(five.value.equals(c))&&(six.value.equals(c))){
             win=true;
             winner=0;
             return 1;
         }
-        if((one.visited==true)&&(two.visited==true)&&(three.visited==true)
+        else if((two.value.equals(c))&&(five.value.equals(c))&&(eight.value.equals(c))){
+            win=true;
+            winner=0;
+            return 1;
+        }
+        else if(spacesPlayed==9){
+            winner=2;
+            win=true;
+            return 1;
+        }
+        /*else if((one.visited==true)&&(two.visited==true)&&(three.visited==true)
                 &&(four.visited==true)&&(five.visited==true)&&(six.visited==true)
                 &&(seven.visited==true)&&(eight.visited==true)&&(nine.visited==true)){
             win=true;
             winner=2;
             return 1;
-        }
+        }*/
         return 0;
     }
     
@@ -222,10 +247,5 @@ public class GameBoard implements ActionListener{
         
         nine.value = "9";
         nine.visited = false;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
