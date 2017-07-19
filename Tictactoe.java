@@ -72,7 +72,7 @@ public class Tictactoe {
         move = in.next();
         
         gb.printBoard();
-        while(gb.CheckWin(player, computer)==0){
+        while(gb.CheckWin(player,computer)==0){
             System.out.println("It's your move!");
             while(gb.takeTurn(move, player)==0){
                  //System.out.println("Please try again. Type the number of the space"
@@ -80,7 +80,7 @@ public class Tictactoe {
                      move=in.next();
             }
             //now the computer needs to take it's turn
-            compMove = r.nextInt(9)+1;
+            compMove = 5;
             comp = Integer.toString(compMove);
             
             while(gb.takeTurn(comp, computer)==0){
@@ -91,13 +91,13 @@ public class Tictactoe {
            //move = in.next();
            //gb.takeTurn(move, player);
         }
-        System.out.println("WINNER!!!");
+        //System.out.println("WINNER!!!");
         switch(gb.winner){
             case 0: System.out.println("womp womp. I win :p");
                     break;
             case 1: System.out.println("You beat me!");
                     break;
-            case 2: System.out.println("I guess this is a draw");
+            case 2: System.out.println("I guess this is a draw...");
                     break;
         }
         /*if(gb.winner==0){

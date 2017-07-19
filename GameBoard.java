@@ -4,11 +4,17 @@
  * and open the template in the editor.
  */
 package tictactoe;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Jonathan
  */
-public class GameBoard {
+public class GameBoard implements ActionListener{
+    
+    
     
     public Position one = new Position("1","1");
     public Position two = new Position("2","2");
@@ -22,7 +28,7 @@ public class GameBoard {
     public Position ten = new Position("10","10");
     
     public boolean win=false;
-    int winner;//1 for player, 0 for computer
+    int winner;//1 for player, 0 for computer *changed this to 5 to begin with
     
    /* public String one = "1";
     public String two = "2";
@@ -100,7 +106,6 @@ public class GameBoard {
            4 5 6
            7 8 9
         */
-    
     public int CheckWin(String p, String c){
         //p is the players character, c is the computer's character
         //checks if the win condition is met
@@ -188,5 +193,39 @@ public class GameBoard {
             return 1;
         }
         return 0;
+    }
+    
+    public void ClearBoard(){
+        one.value = "1";
+        one.visited = false;
+        
+        two.value = "2";
+        two.visited = false;
+        
+        three.value = "3";
+        three.visited = false;
+        
+        four.value = "four";
+        four.visited = false;
+        
+        five.value = "5";
+        five.visited = false;
+        
+        six.value = "6";
+        six.visited = false;
+        
+        seven.value = "7";
+        seven.visited = false;
+        
+        eight.value = "8";
+        eight.visited = false;
+        
+        nine.value = "9";
+        nine.visited = false;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
